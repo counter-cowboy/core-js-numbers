@@ -50,7 +50,7 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return (value1 + value2) / 2;
+  return ((value1 / 10 + value2 / 10) / 2) * 10;
 }
 
 /**
@@ -85,7 +85,7 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-  return -a / b;
+  return -b / a;
 }
 
 /**
@@ -179,8 +179,7 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  const remain = num % 10 ** pow;
-  return num - remain;
+  return Math.round(num / 10 ** pow) * 10 ** pow;
 }
 
 /**
@@ -201,10 +200,10 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  let isTrue;
+  if (n === 2 || n === 1) return true;
+  let isTrue = true;
   for (let i = 2; i <= Math.sqrt(n); i += 1) {
     if (n % i === 0) isTrue = false;
-    isTrue = true;
   }
   return isTrue;
 }
@@ -225,7 +224,7 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  if (+value === 0 || isNaN(+value)) return def;
+  if (Number.value === 0 || Number.isNaN(+value)) return def;
   return +value;
 }
 
@@ -293,8 +292,13 @@ function getSumToN(n) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  const strArray = num.toString();
+  let sum = 0;
+  for (let i = 0; i < strArray.length; i += 1) {
+    sum += +strArray[i];
+  }
+  return +sum;
 }
 
 /**
@@ -308,8 +312,8 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  return (Math.log(num) / Math.log(2)) % 1 === 0;
 }
 
 /**
@@ -322,8 +326,8 @@ function isPowerOfTwo(/* num */) {
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  throw new Error('Not implemented');
+function getSine(num) {
+  return Math.sin(num);
 }
 
 /**
@@ -337,8 +341,8 @@ function getSine(/* num */) {
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  return number.toString(base);
 }
 
 /**
